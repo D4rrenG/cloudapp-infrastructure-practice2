@@ -67,6 +67,49 @@ This guide tracks our infrastructure provisioning tasks.
 - Status: Not started
 - Assigned to: Programmer A
 
+### CI/CD Pipeline Configuration
+- Status: ✅ In Progress (Programmer B)
+- Assigned to: Programmer B
+
+#### GitHub Repository Setup:
+- Organization: techcorp-dev
+- Repository: cloudapp-admin-portal
+- Branch protection: Enabled on main
+- Required reviews: 2 approvals
+- Status checks required: All tests must pass
+
+#### Branch Strategy:
+- `main` → Production deployments
+- `develop` → Test/staging deployments
+- `feature/*` → Feature development
+- `hotfix/*` → Emergency fixes
+
+#### GitHub Actions Workflows:
+
+**Test Deployment (deploy-test.yml)**
+- Trigger: Push to `develop` branch
+- Steps:
+  1. Checkout code
+  2. Install Node.js 18.x
+  3. Run `npm install`
+  4. Run `npm test`
+  5. Run `npm run build`
+  6. Deploy to Azure Static Web App (Test)
+- Notifications: Slack #deployments on failure
+
+**Production Deployment (deploy-prod.yml)**
+- Trigger: Push to `main` branch
+- Manual approval required: Yes
+- Steps:
+  1. Checkout code
+  2. Install Node.js 18.x
+  3. Run `npm install`
+  4. Run `npm test`
+  5. Run security scan
+  6. Run `npm run build`
+  7. Deploy to Azure Static Web App (Prod)
+- Notifications: Email DevOps team on success/failure
+
 ### Monitoring & Observability
 - Status: ✅ In Progress (Programmer A)
 - Assigned to: Programmer A
