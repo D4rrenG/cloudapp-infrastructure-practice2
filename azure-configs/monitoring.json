@@ -1,0 +1,54 @@
+{
+  "applicationInsights": [
+    {
+      "name": "appi-cloudapp-test",
+      "resourceGroup": "RG-CloudApp-Test",
+      "location": "centralus",
+      "logAnalyticsWorkspace": "law-cloudapp-test",
+      "retentionDays": 30,
+      "smartDetection": true
+    },
+    {
+      "name": "appi-cloudapp-prod",
+      "resourceGroup": "RG-CloudApp-Prod",
+      "location": "centralus",
+      "logAnalyticsWorkspace": "law-cloudapp-prod",
+      "retentionDays": 90,
+      "smartDetection": true
+    }
+  ],
+  "customMetrics": [
+    {
+      "name": "PageLoadTime",
+      "threshold": 2000,
+      "unit": "milliseconds"
+    },
+    {
+      "name": "APIResponseTime",
+      "threshold": 500,
+      "unit": "milliseconds"
+    },
+    {
+      "name": "AuthenticationFailures",
+      "threshold": 10,
+      "window": "5 minutes"
+    }
+  ],
+  "alertRules": [
+    {
+      "name": "HighAuthFailureRate",
+      "condition": "AuthenticationFailures > 10 in 5 minutes",
+      "action": "Email DevOps team"
+    },
+    {
+      "name": "SlowResponseTime",
+      "condition": "APIResponseTime > 3000 ms",
+      "action": "Slack #alerts channel"
+    },
+    {
+      "name": "HighErrorRate",
+      "condition": "ErrorRate > 5%",
+      "action": "Page on-call engineer"
+    }
+  ]
+}
