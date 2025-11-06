@@ -109,3 +109,36 @@ This guide tracks our infrastructure provisioning tasks.
   6. Run `npm run build`
   7. Deploy to Azure Static Web App (Prod)
 - Notifications: Email DevOps team on success/failure
+
+### Monitoring & Observability
+- Status: ✅ In Progress (Programmer A)
+- Assigned to: Programmer A
+
+#### Application Insights Configuration:
+
+**Test Environment:**
+- Resource name: appi-cloudapp-test
+- Resource group: RG-CloudApp-Test
+- Log Analytics workspace: law-cloudapp-test
+- Smart detection: Enabled
+- Retention: 30 days
+
+**Production Environment:**
+- Resource name: appi-cloudapp-prod
+- Resource group: RG-CloudApp-Prod
+- Log Analytics workspace: law-cloudapp-prod
+- Smart detection: Enabled
+- Retention: 90 days (hot) + 7 years (cold)
+
+#### Custom Metrics Tracked:
+- Page load times (< 2 seconds target)
+- API response times (< 500ms target)
+- Authentication failures (alert threshold: 10 in 5 min)
+- PII access patterns (audit all access)
+- Error rates (alert threshold: 5%)
+
+#### Alert Rules Configured:
+1. Failed authentication > 10 in 5 minutes → Email DevOps
+2. Response time > 3 seconds → Slack #alerts
+3. Error rate > 5% → Page on-call engineer
+4. Abnormal data access patterns → Email security team
