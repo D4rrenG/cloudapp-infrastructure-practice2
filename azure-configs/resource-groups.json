@@ -1,0 +1,22 @@
+{
+  "resourceGroups": [
+    {
+      "name": "RG-CloudApp-Test",
+      "location": "centralus",
+      "tags": {
+        "Environment": "Test",
+        "CostCenter": "Engineering",
+        "Owner": "DevOps Team"
+      }
+    },
+    {
+      "name": "RG-CloudApp-Prod",
+      "location": "centralus",
+      "tags": {
+        "Environment": "Production",
+        "CostCenter": "Engineering",
+        "Owner": "DevOps Team"
+      }
+    }
+  ]
+}

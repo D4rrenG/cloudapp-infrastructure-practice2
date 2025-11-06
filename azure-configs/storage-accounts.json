@@ -1,0 +1,28 @@
+{
+  "storageAccounts": [
+    {
+      "name": "stcloudapptest",
+      "resourceGroup": "RG-CloudApp-Test",
+      "location": "centralus",
+      "sku": "Standard_LRS",
+      "containers": [
+        {
+          "name": "user-account-documents",
+          "publicAccess": "None"
+        }
+      ]
+    },
+    {
+      "name": "stcloudappprod",
+      "resourceGroup": "RG-CloudApp-Prod",
+      "location": "centralus",
+      "sku": "Standard_GRS",
+      "containers": [
+        {
+          "name": "user-account-documents",
+          "publicAccess": "None"
+        }
+      ]
+    }
+  ]
+}
