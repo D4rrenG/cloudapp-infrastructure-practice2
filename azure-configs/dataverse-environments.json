@@ -1,0 +1,39 @@
+{
+  "dataverseEnvironments": [
+    {
+      "name": "CloudApp-Test",
+      "type": "Sandbox",
+      "region": "unitedstates",
+      "securityGroup": "DevTeam-Test",
+      "database": {
+        "capacity": "10GB",
+        "fileStorage": "20GB",
+        "auditingEnabled": true,
+        "rowLevelSecurity": true,
+        "transparentDataEncryption": true
+      },
+      "backup": {
+        "frequency": "Daily",
+        "retention": "28 days"
+      }
+    },
+    {
+      "name": "CloudApp-Prod",
+      "type": "Production",
+      "region": "unitedstates",
+      "securityGroup": "Admins-Prod",
+      "database": {
+        "capacity": "20GB",
+        "fileStorage": "40GB",
+        "auditingEnabled": true,
+        "rowLevelSecurity": true,
+        "transparentDataEncryption": true
+      },
+      "backup": {
+        "frequency": "Twice daily",
+        "hotRetention": "90 days",
+        "coldRetention": "7 years"
+      }
+    }
+  ]
+}

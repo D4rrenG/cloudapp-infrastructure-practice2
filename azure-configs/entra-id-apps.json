@@ -1,0 +1,49 @@
+{
+  "appRegistrations": [
+    {
+      "name": "CloudApp-App-Test",
+      "platform": "SPA",
+      "accountTypes": "Single tenant",
+      "tenantDomain": "techcorp.com",
+      "tokenLifetime": "1 hour",
+      "permissions": [
+        {
+          "api": "Microsoft Graph",
+          "permission": "User.Read",
+          "type": "Delegated"
+        },
+        {
+          "api": "Dynamics CRM",
+          "permission": "user_impersonation",
+          "type": "Delegated"
+        }
+      ]
+    },
+    {
+      "name": "CloudApp-App-Prod",
+      "platform": "SPA",
+      "accountTypes": "Single tenant",
+      "tenantDomain": "techcorp.com",
+      "tokenLifetime": "1 hour",
+      "permissions": [
+        {
+          "api": "Microsoft Graph",
+          "permission": "User.Read",
+          "type": "Delegated"
+        },
+        {
+          "api": "Dynamics CRM",
+          "permission": "user_impersonation",
+          "type": "Delegated"
+        }
+      ]
+    }
+  ],
+  "securityGroups": [
+    {
+      "name": "CloudApp-InternalStaff",
+      "description": "All TechCorp employees with access to CloudApp",
+      "assignedApps": ["CloudApp-App-Test", "CloudApp-App-Prod"]
+    }
+  ]
+}
